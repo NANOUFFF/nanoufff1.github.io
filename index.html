@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.bd{
+				position: relative;
+				text-align: center;
+
+			} 
+			.img1{
+				width: 500px;
+				height: 600px;
+			}
+			
+			.box1{
+				position: absolute;
+				width: 500px;
+				height: 600px;
+				left:-500px ;
+				
+			}
+
+			
+			
+			
+			.box2{
+				position: absolute;
+				width: 600px;
+				height: 800px;
+				top: 30px;
+				right: -600px;
+				visibility: hidden;
+			}
+			.animate1{
+			animation: d1 3s linear forwards;
+			}
+			.animate2{
+			animation: d2 3s linear forwards;
+			}
+			
+			
+			.animate3{
+			animation: d3 3s linear forwards;
+			}
+			.animate4{
+			animation: d4 3s linear forwards;
+			}
+			
+			
+/* 			.btn2:active{
+				animation: d3 3s linear forwards;
+				animation: d4 3s linear forwards;
+			}
+			.btn1:active{
+				animation: d1 3s linear forwards;
+				animation: d2 3s linear forwards;
+			}
+			 */
+			
+			.btn1{
+				margin-top: 600px;
+				font-size: 80px;
+			}
+			.btn2{
+				margin-top: 600px;
+				font-size: 80px;
+			}
+			
+			@keyframes d1{
+				0%{
+					transform: translate3d(0,0,0);
+				}
+				100%{
+					transform: translate3d(600px,0,0);
+				}
+			}
+			@keyframes d2{
+				0%{
+					transform: translate3d(0,0,0);
+				}
+				100%{
+					transform: translate3d(-600px,0,0);
+				}
+			}
+			
+			
+			
+			
+			
+			@keyframes d3{
+				0%{
+					transform: translate3d(0,0,0);
+				}
+				100%{
+					transform: translate3d(-600px,0,0);
+				}
+			}
+			@keyframes d4{
+				0%{
+					transform: translate3d(0,0,0);
+				}
+				100%{
+					transform: translate3d(600px,0,0);
+				}
+			}
+			p{
+				font-size: 50px;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			.box{
+				margin-top: 300px;
+				text-align: center;
+			}
+			button{
+				font-size: 40px;
+			}
+			.bomb{
+				text-align: center;
+				margin: 30px auto;
+				background-color: hotpink;
+				font-size: 50px;
+				line-height: 400px;
+				width: 400px;
+				height: 400px;
+			}
+			.zha{
+				width: 1000px;
+				height: 1000px;
+				border-radius: 50%;
+				transition:all 3s;
+				line-height: 1000px;
+				background-color:skyblue;
+				font-size: 50px;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="bd">
+			<p>问世间,情为何物?</p>
+			<p>你想和她在一起?</p>
+			<p>华仔:回不去了!</p>
+		<div class="box1">  <img src="0.png" alt="图像" class="img1"> </div>
+		<div class="box2">  <img src="1.png" alt="图像"> </div>
+		<button  class="btn1">在一起</button>
+		<button  class="btn2">分别了</button>
+		</div>
+		
+		
+		
+		<div class="box">
+			<button class="start">开彩蛋</button>
+			<button class="end">开彩蛋</button>
+		</div>
+		
+		<div class="bomb"></div>
+		
+		
+		
+		
+		
+		<script>
+			
+			let box1 = document.querySelector('.box1')
+			let box2 = document.querySelector('.box2')
+			let btn1= document.querySelector('.btn1')
+			let btn2 = document.querySelector('.btn2')
+			btn1.addEventListener('click',function(){
+				box2.style.visibility = 'visible'
+				box1.classList.add('animate1')
+				box2.classList.add('animate2')
+			})
+			btn2.addEventListener('click',function(){
+				box2.style.visibility = 'hidden'
+				box1.classList.remove('animate1')
+				box2.classList.remove('animate2')
+			})
+			let start = document.querySelector('.start');
+			let end = document.querySelector('.end');
+			let bomb = document.querySelector('.bomb');
+			let time = 5;
+			let dsq = null
+			start.addEventListener('click',function(){
+				 dsq = setInterval(function(){
+					if(time == 0){
+						bomb.classList.add('zha');
+						bomb.innerHTML = '妹子:华仔,其实我也喜欢你'
+						start.disabled = true;
+						end.disabled = true;
+					}else{
+						bomb.innerHTML = `距离彩蛋时间${time--}秒`
+					}
+				},1000)
+			})
+			end.addEventListener('click',function(){
+				clearTimeout(dsq)
+				bomb.innerHTML = '妹子:华仔,我们还是做朋友吧!'
+				start.disabled = true;
+				end.disabled = true;
+			})
+			
+		</script>
+	</body>
+</html>
